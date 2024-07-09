@@ -29,3 +29,4 @@ modelscope_models
 examples/aishell/llm_asr_nar/*
 .venv
 example/
+poetry.lock

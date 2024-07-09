@@ -5,15 +5,20 @@
 
 from model import SenseVoiceSmall
 
-model_dir = "iic/SenseVoiceSmall"
-m, kwargs = SenseVoiceSmall.from_pretrained(model=model_dir)
+
+def main():
+    model_dir = "iic/SenseVoiceSmall"
+    m, kwargs = SenseVoiceSmall.from_pretrained(model=model_dir)
+
+    res = m.inference(
+        data_in="example/sent_008-20240617174027-j5sqgxw.wav",
+        language="auto",  # "zn", "en", "yue", "ja", "ko", "nospeech"
+        use_itn=False,
+        **kwargs,
+    )
+
+    print(res)
 
 
-res = m.inference(
-    data_in="https://isv-data.oss-cn-hangzhou.aliyuncs.com/ics/MaaS/ASR/test_audio/asr_example_zh.wav",
-    language="auto", # "zn", "en", "yue", "ja", "ko", "nospeech"
-    use_itn=False,
-    **kwargs,
-)
-
-print(res)
+if __name__ == "__main__":
+    main()
